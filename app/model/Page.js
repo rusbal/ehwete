@@ -47,27 +47,33 @@ const create = (data) => {
 
 const update = (data) => {
   return new Promise((resolve, reject) => {
-    Page.findById(data._id, (error, page) => {
-      if (error) {
-        console.log(error)
-        reject(error)
+    Page.findOne({ slug: data.slug, _id: { '$ne': data._id } }, (error, page) => {
+      if (page) {
+        reject("Page slug exists, choose another.")
       } else {
-        if (page) {
-          page.title = data.title
-          page.slug = data.slug
-          page.content = data.content
-          page.sorting = data.sorting
+        Page.findById(data._id, (error, page) => {
+          if (error) {
+            console.log(error)
+            reject(error)
+          } else {
+            if (page) {
+              page.title = data.title
+              page.slug = data.slug
+              page.content = data.content
+              page.sorting = data.sorting
 
-          page.save((error) => {
-            if (error) {
-              reject(error)
+              page.save((error) => {
+                if (error) {
+                  reject(error)
+                } else {
+                  resolve(page)
+                }
+              })
             } else {
-              resolve(page)
+              reject(404)
             }
-          })
-        } else {
-          reject(404)
-        }
+          }
+        })
       }
     })
   })

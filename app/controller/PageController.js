@@ -24,6 +24,7 @@ const process = (req, res, path, template) => {
         req.flash('danger', 'Page no longer exist.')
         res.redirect(path)
       } else {
+        req.body.errors = errors
         res.render(template, req.body)
       }
     })
