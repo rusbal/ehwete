@@ -34,6 +34,10 @@ module.exports = {
     h.process(req, res, Page, '/admin/pages', 'admin/edit_page')
   },
 
+  destroy: (req, res) => {
+    h.delete(req, res, Page, '/admin/pages')
+  },
+
   reorder: (req, res) => {
     Page.reorder(req.body['id[]'])
   }

@@ -9,9 +9,15 @@ module.exports = {
   c: (controllerAction, req, res, next) => {
     return (req, res, next) => {
       let [controller, action] = controllerAction.split('#')
-      const ctrl = require(`./controller/${controller}Controller`)
+      controller += 'Controller'
+      const ctrl = require(`./controller/${controller}`)
       action = action || 'index'
-      ctrl[action](req, res, next)
+
+      try {
+        ctrl[action](req, res, next)
+      } catch (e) {
+        res.render('error/404', { controller, action })
+      }
     }
   }
 }

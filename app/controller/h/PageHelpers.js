@@ -28,5 +28,16 @@ module.exports = {
           res.render(template, req.body)
         }
       })
+  },
+
+  delete: (req, res, Page, path) => {
+    Page.findByIdAndRemove(req.params.id, (error, page) => {
+      if (error) {
+        req.flash('danger', `Failed attempt to delete page with id: ${req.params.id}`)
+      } else {
+        req.flash('info', `Page <b>${page.title}</b> was deleted.`)
+      }
+      res.redirect(path)
+    })
   }
 }
