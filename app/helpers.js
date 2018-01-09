@@ -15,8 +15,8 @@ module.exports = {
 
       try {
         ctrl[action](req, res, next)
-      } catch (e) {
-        res.render('error/404', { controller, action })
+      } catch (error) {
+        res.render('error/404', { error, controller, action })
       }
     }
   }

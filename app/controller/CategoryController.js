@@ -31,6 +31,7 @@ module.exports = {
   },
 
   update: (req, res) => {
+    req.body.id = req.params.id
     h.process(req, res, Category, '/admin/categories', 'admin/category/edit')
   },
 

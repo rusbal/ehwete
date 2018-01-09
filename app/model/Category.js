@@ -40,11 +40,11 @@ const create = (data) => {
 
 const update = (data) => {
   return new Promise((resolve, reject) => {
-    Category.findOne({ slug: data.slug, _id: { '$ne': data._id } }, (error, category) => {
+    Category.findOne({ slug: data.slug, _id: { '$ne': data.id } }, (error, category) => {
       if (category) {
         reject("Category slug exists, choose another.")
       } else {
-        Category.findById(data._id, (error, category) => {
+        Category.findById(data.id, (error, category) => {
           if (error) {
             console.log(error)
             reject(error)
@@ -61,6 +61,7 @@ const update = (data) => {
                 }
               })
             } else {
+              console.log('id not found: ', data.id)
               reject(404)
             }
           }
@@ -74,11 +75,7 @@ const update = (data) => {
  * Public
  */
 Category.persist = (data) => {
-  if (data._id) {
-    return update(data)
-  } else {
-    return create(data)
-  }
+  return data.id ? update(data) : create(data)
 }
 
 module.exports = Category

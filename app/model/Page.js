@@ -47,11 +47,11 @@ const create = (data) => {
 
 const update = (data) => {
   return new Promise((resolve, reject) => {
-    Page.findOne({ slug: data.slug, _id: { '$ne': data._id } }, (error, page) => {
+    Page.findOne({ slug: data.slug, _id: { '$ne': data.id } }, (error, page) => {
       if (page) {
         reject("Page slug exists, choose another.")
       } else {
-        Page.findById(data._id, (error, page) => {
+        Page.findById(data.id, (error, page) => {
           if (error) {
             console.log(error)
             reject(error)
@@ -98,11 +98,7 @@ Page.reorder = (ids) => {
 }
 
 Page.persist = (data) => {
-  if (data._id) {
-    return update(data)
-  } else {
-    return create(data)
-  }
+  return data.id ? update(data) : create(data)
 }
 
 module.exports = Page

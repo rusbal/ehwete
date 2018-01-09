@@ -11,11 +11,9 @@ module.exports = {
       return res.render(template, req.body)
     }
 
-    const is_new = req.body._id === undefined
-
     Category.persist(req.body)
       .then(() => {
-        req.flash('success', `Category successfully ${is_new ? 'created' : 'updated'}.`)
+        req.flash('success', `Category successfully ${req.body.id ? 'update' : 'create'}d.`)
         res.redirect(path)
       })
       .catch(errors => {
