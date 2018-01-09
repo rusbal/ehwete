@@ -13,7 +13,7 @@ module.exports = {
   },
 
   create: (req, res) => {
-    h.process(req, res, Page, '/admin/pages', 'admin/add_page')
+    h.process(req, res, Page, '/admin/pages', 'admin/page/add')
   },
 
   edit: (req, res) => {
@@ -31,7 +31,7 @@ module.exports = {
   },
 
   update: (req, res) => {
-    h.process(req, res, Page, '/admin/pages', 'admin/edit_page')
+    h.process(req, res, Page, '/admin/pages', 'admin/page/edit')
   },
 
   destroy: (req, res) => {
