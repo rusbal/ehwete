@@ -22,7 +22,7 @@ const create = (data) => {
         reject(error)
       } else {
         if (category) {
-          reject('Title is already taken.  Please choose another.')
+          reject('Category is already taken.  Please choose another.')
         } else {
           const category = new Category(data)
           category.save((error) => {
