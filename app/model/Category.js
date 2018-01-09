@@ -17,12 +17,12 @@ const Category = mongoose.model('Category', CategorySchema)
  */
 const create = (data) => {
   return new Promise((resolve, reject) => {
-    Category.findOne({ slug: data.slug }, (error, category) => {
+    Category.findOne({ title: data.title }, (error, category) => {
       if (error) {
         reject(error)
       } else {
         if (category) {
-          reject('Slug is already taken.  Please choose another.')
+          reject('Title is already taken.  Please choose another.')
         } else {
           const category = new Category(data)
           category.save((error) => {
