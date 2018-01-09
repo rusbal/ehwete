@@ -33,7 +33,7 @@
         placeholder: "ui-state-highlight",
         update () {
           const id = $(this).sortable('toArray')
-          const url = '/admin/pages/reorder-pages'
+          const url = '/admin/pages/order'
           $.post(url, {id})
         }
       })

@@ -3,7 +3,7 @@
   <a href="/admin/categories/new">Add category</a>
   <br><br>
 
-  <table class="table table-striped table-sort">
+  <table class="table table-striped">
     <thead>
       <tr class="home">
         <th>Title</th>
@@ -21,19 +21,4 @@
       <% }) %>
     </tbody>
   </table>
-
-  <script>
-    window.onload = () => {
-      $('tbody').sortable({
-        items: "tr:not('.home')",
-        placeholder: "ui-state-highlight",
-        update () {
-          const id = $(this).sortable('toArray')
-          const url = '/admin/categories/reorder-categories'
-          $.post(url, {id})
-        }
-      })
-    }
-  </script>
-
 <%- include('../../_layouts/adminfooter') %>
