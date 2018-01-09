@@ -17,7 +17,7 @@ module.exports = {
   },
 
   edit: (req, res) => {
-    Category.findOne({ slug: req.params.slug }, (error, category) => {
+    Category.findById(req.params.id, (error, category) => {
       if (error) {
         return console.log(error)
       }

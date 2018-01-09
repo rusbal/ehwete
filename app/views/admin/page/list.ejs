@@ -13,9 +13,9 @@
     </thead>
     <tbody>
       <% pages.forEach((page) => { %>
-        <tr id="<%= page.id %>" class="<%= page.slug %>">
+        <tr id="<%= page.id %>">
           <td><%= page.title %></td>
-          <td><a href="/admin/pages/edit/<%= page.slug %>">Edit</a></td>
+          <td><a href="/admin/pages/edit/<%= page.id %>">Edit</a></td>
           <% if (page.slug === 'home') { %> 
             <td></td>
           <% } else { %>

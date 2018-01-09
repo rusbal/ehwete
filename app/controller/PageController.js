@@ -17,7 +17,7 @@ module.exports = {
   },
 
   edit: (req, res) => {
-    Page.findOne({ slug: req.params.slug }, (error, page) => {
+    Page.findById(req.params.id, (error, page) => {
       if (error) {
         return console.log(error)
       }
