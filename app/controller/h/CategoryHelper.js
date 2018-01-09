@@ -4,7 +4,7 @@ module.exports = {
   process: (req, res, Category, path, template) => {
     req.checkBody('title', 'Title must not be blank.').notEmpty()
 
-    req.body.slug = slugit(req.body.slug || req.body.title)
+    req.body.slug = slugit(req.body.title)
     req.body.errors = req.validationErrors()
 
     if (req.body.errors) {

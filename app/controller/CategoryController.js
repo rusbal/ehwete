@@ -9,7 +9,7 @@ module.exports = {
   },
 
   new: (req, res) => {
-    res.render('admin/category/add', { title: '', slug: '' })
+    res.render('admin/category/add', { title: '' })
   },
 
   create: (req, res) => {
