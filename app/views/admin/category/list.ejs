@@ -13,10 +13,10 @@
     </thead>
     <tbody>
       <% categories.forEach((category) => { %>
-        <tr id="<%= category.id %>" class="<%= category.slug %>">
+        <tr>
           <td><%= category.title %></td>
-          <td><a href="/admin/categories/edit/<%= category._id %>">Edit</a></td>
-          <td><a data-confirm="Are you sure?" data-method="delete" href="/admin/categories/destroy/<%= category._id %>">Delete</a></td>
+          <td><a href="/admin/categories/edit/<%= category.id %>">Edit</a></td>
+          <td><a data-confirm="Are you sure?" data-method="delete" href="/admin/categories/destroy/<%= category.id %>">Delete</a></td>
         </tr>
       <% }) %>
     </tbody>
