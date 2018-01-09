@@ -46,19 +46,20 @@
     </nav>
 
     <main role="main" class="container">
-    <%- messages('messages', locals) %>
-    <% if (errors) { %>
-      <div class="alert alert-danger">
-        <% if (typeof errors == 'string') { %>
-          <%= errors %>
-        <% } else { %>
-          <ul>
-            <% errors.forEach(error => { %>
-              <li>
-                <%= error.msg %>
-              </li>
-            <% }) %>
-          </ul>
-        <% } %>
-      </div>
-    <% } %>
+      <%- messages('_layouts/messages', locals) %>
+
+      <% if (errors) { %>
+        <div class="alert alert-danger">
+          <% if (typeof errors == 'string') { %>
+            <%= errors %>
+          <% } else { %>
+            <ul>
+              <% errors.forEach(error => { %>
+                <li>
+                  <%= error.msg %>
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
+        </div>
+      <% } %>

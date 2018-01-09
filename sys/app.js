@@ -21,9 +21,9 @@ module.exports = () => {
 
   app.use(session({
     secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    resave: true,
+    saveUninitialized: true
+    // cookie: { secure: true }
   }))
 
   app.use(expressValidator())
@@ -31,7 +31,7 @@ module.exports = () => {
   app.use(require('connect-flash')())
   app.use(function (req, res, next) {
     res.locals.messages = require('express-messages')(req, res)
-    next();
+    next()
   })
 
   return app
