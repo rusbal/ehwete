@@ -1,6 +1,6 @@
-<%- include('../_layouts/adminheader') %>
+<%- include('../../_layouts/adminheader') %>
   <h2 class="page-title">Pages</h2>
-  <a href="/admin/pages/add-page">Add page</a>
+  <a href="/admin/pages/new">Add page</a>
   <br><br>
 
   <table class="table table-striped table-sort">
@@ -15,11 +15,11 @@
       <% pages.forEach((page) => { %>
         <tr id="<%= page.id %>" class="<%= page.slug %>">
           <td><%= page.title %></td>
-          <td><a href="/admin/pages/edit-page/<%= page.slug %>">Edit</a></td>
+          <td><a href="/admin/pages/edit/<%= page.slug %>">Edit</a></td>
           <% if (page.slug === 'home') { %> 
             <td></td>
           <% } else { %>
-            <td><a data-confirm="Are you sure?" data-method="delete" href="/admin/pages/delete-page/<%= page._id %>">Delete</a></td>
+            <td><a data-confirm="Are you sure?" data-method="delete" href="/admin/pages/destroy/<%= page._id %>">Delete</a></td>
           <% } %>
         </tr>
       <% }) %>
@@ -40,4 +40,4 @@
     }
   </script>
 
-<%- include('../_layouts/adminfooter') %>
+<%- include('../../_layouts/adminfooter') %>

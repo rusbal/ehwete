@@ -2,12 +2,19 @@ const express = require('express')
 const router = express.Router()
 const c = require('../helpers').c
 
-router.get('/', c('Page'))
-router.get('/add-page', c('Page#new'))
-router.post('/add-page', c('Page#create'))
-router.get('/edit-page/:slug', c('Page#edit'))
-router.post('/edit-page/:slug', c('Page#update'))
-router.delete('/delete-page/:id', c('Page#destroy'))
-router.post('/reorder-pages', c('Page#reorder'))
+router.get('/pages/', c('Page'))
+router.get('/pages/new', c('Page#new'))
+router.post('/pages/create', c('Page#create'))
+router.get('/pages/edit/:slug', c('Page#edit'))
+router.post('/pages/update/:slug', c('Page#update'))
+router.delete('/pages/destroy/:id', c('Page#destroy'))
+router.post('/pages/order', c('Page#reorder'))
+
+router.get('/categories/', c('Category'))
+router.get('/categories/new', c('Category#new'))
+router.post('/categories/create', c('Category#create'))
+router.get('/categories/edit/:slug', c('Category#edit'))
+router.post('/categories/update/:slug', c('Category#update'))
+router.delete('/categories/destroy/:id', c('Category#destroy'))
 
 module.exports = router

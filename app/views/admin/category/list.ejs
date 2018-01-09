@@ -1,0 +1,39 @@
+<%- include('../../_layouts/adminheader') %>
+  <h2 class="category-title">Pages</h2>
+  <a href="/admin/categories/new">Add category</a>
+  <br><br>
+
+  <table class="table table-striped table-sort">
+    <thead>
+      <tr class="home">
+        <th>Title</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% categories.forEach((category) => { %>
+        <tr id="<%= category.id %>" class="<%= category.slug %>">
+          <td><%= category.title %></td>
+          <td><a href="/admin/categories/edit/<%= category.slug %>">Edit</a></td>
+          <td><a data-confirm="Are you sure?" data-method="delete" href="/admin/categories/destroy/<%= category._id %>">Delete</a></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <script>
+    window.onload = () => {
+      $('tbody').sortable({
+        items: "tr:not('.home')",
+        placeholder: "ui-state-highlight",
+        update () {
+          const id = $(this).sortable('toArray')
+          const url = '/admin/categories/reorder-categories'
+          $.post(url, {id})
+        }
+      })
+    }
+  </script>
+
+<%- include('../../_layouts/adminfooter') %>

@@ -1,10 +1,9 @@
-<%- include('../_layouts/adminheader') %>
+<%- include('../../_layouts/adminheader') %>
   <h2 class="page-title">Add Page</h2>
   <a href="/admin/pages">All pages</a>
   <br><br>
 
-  <form method="post" action="/admin/pages/edit-page/<%= slug %>">
-    <input type="hidden" name="_id" type="hidden" value="<%= _id %>">
+  <form method="post" action="/admin/pages/create">
     <div class="form-group">
       <label for="">Title</label>
       <input class="form-control" type="text" name="title" value="<%= title %>" placeholder="Title">
@@ -20,4 +19,4 @@
     <button class="btn btn-primary">Submit</button>
   </form>
 
-<%- include('../_layouts/adminfooter') %>
+<%- include('../../_layouts/adminfooter') %>

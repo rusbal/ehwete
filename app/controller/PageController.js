@@ -1,15 +1,15 @@
 const Page = require('../model/page')
-const h = require('./h/PageHelpers')
+const h = require('./h/PageHelper')
 
 module.exports = {
   index: (req, res) => {
     Page.find({}).sort({ sorting: 1 }).exec((error, pages) => {
-      res.render('admin/pages', { pages })
+      res.render('admin/page/list', { pages })
     })
   },
 
   new: (req, res) => {
-    res.render('admin/add_page', { title: '', slug: '', content: '' })
+    res.render('admin/page/add', { title: '', slug: '', content: '' })
   },
 
   create: (req, res) => {
@@ -25,7 +25,7 @@ module.exports = {
         req.flash('danger', `Page no longer exists.`)
         res.redirect('/admin/pages')
       } else {
-        res.render('admin/edit_page', page)
+        res.render('admin/page/edit', page)
       }
     })
   },
